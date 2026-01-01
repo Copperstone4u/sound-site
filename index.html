@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Sound Page</title>
+  <title>Loading</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      opacity: 0.8;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
 
-<button onclick="document.getElementById('sound').play()">
-  Click to Play Sound
-</button>
+<div id="loading">Loading...</div>
 
 <audio id="sound" src="sound.mp3"></audio>
+
+<script>
+  const sound = document.getElementById("sound");
+  const loading = document.getElementById("loading");
+
+  document.addEventListener("click", () => {
+    sound.play();
+    loading.style.display = "none";
+  }, { once: true });
+</script>
 
 </body>
 </html>
